@@ -29,7 +29,10 @@ export function PagosScreen({ navigation, route }: Props) {
   return (
     <View style={styles.container}>
       <DarkHeader>
-        <BackLink label="Inicio" onPress={() => navigation.goBack()} />
+        <BackLink
+          label="Inicio"
+          onPress={() => navigation.reset({ index: 0, routes: [{ name: 'Home', params: { rol: 'apoderado' } }] })}
+        />
         <Text style={styles.title}>Pagos</Text>
         <Text style={styles.subtitle}>{hijo.nombre} · {hijo.curso}</Text>
       </DarkHeader>
@@ -91,7 +94,12 @@ export function PagosScreen({ navigation, route }: Props) {
       <BottomNavBar
         activeKey="pagos"
         items={[
-          { key: 'inicio', label: 'Inicio', icon: House, onPress: () => navigation.goBack() },
+          {
+            key: 'inicio',
+            label: 'Inicio',
+            icon: House,
+            onPress: () => navigation.reset({ index: 0, routes: [{ name: 'Home', params: { rol: 'apoderado' } }] }),
+          },
           { key: 'notas', label: 'Notas', icon: GraduationCap, onPress: () => navigation.navigate('Notas') },
           { key: 'hoja', label: 'Hoja de vida', icon: FileText, onPress: () => navigation.navigate('HojaDeVida') },
           { key: 'perfil', label: 'Perfil', icon: User, onPress: () => navigation.navigate('Perfil', { rol: 'apoderado' }) },
