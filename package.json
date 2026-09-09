@@ -33,7 +33,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "predeploy": "expo export -p web",
-    "deploy": "gh-pages --dotfiles --nojekyll -d dist"
+    "deploy": "gh-pages --dotfiles --nojekyll --remove \"{.,.gitignore,.claude/**}\" -d dist"
   },
   "private": true
 }
