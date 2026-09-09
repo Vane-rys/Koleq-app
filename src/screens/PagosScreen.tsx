@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { CircleAlert, Clock } from 'lucide-react-native';
+import { CircleAlert, Clock, House, GraduationCap, FileText, User } from 'lucide-react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { colors, spacing, radii, typeScale } from '../theme';
 import { DarkHeader } from '../components/DarkHeader';
 import { HomeCard } from '../components/HomeCard';
 import { BackLink } from '../components/BackLink';
+import { BottomNavBar } from '../components/BottomNavBar';
 import { mockApoderado, mockPagos } from '../data/mockHome';
 import type { RootStackParamList } from '../navigation/types';
 
@@ -86,6 +87,16 @@ export function PagosScreen({ navigation, route }: Props) {
           </HomeCard>
         ))}
       </ScrollView>
+
+      <BottomNavBar
+        activeKey="pagos"
+        items={[
+          { key: 'inicio', label: 'Inicio', icon: House, onPress: () => navigation.goBack() },
+          { key: 'notas', label: 'Notas', icon: GraduationCap, onPress: () => navigation.navigate('Notas') },
+          { key: 'hoja', label: 'Hoja de vida', icon: FileText, onPress: () => navigation.navigate('HojaDeVida') },
+          { key: 'perfil', label: 'Perfil', icon: User, onPress: () => navigation.navigate('Perfil', { rol: 'apoderado' }) },
+        ]}
+      />
     </View>
   );
 }
